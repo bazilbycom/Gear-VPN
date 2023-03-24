@@ -9,6 +9,7 @@ plugins {
     id 'com.google.devtools.ksp'
 }
 
+
 android {
     def props = new Properties()
     file("${rootProject.projectDir}/local.properties").withInputStream { props.load(it) }
@@ -30,19 +31,19 @@ android {
         buildConfigField("String", "GEAR_API", "\"${props.getProperty("gear.api")}\"")
     }
 
-    signingConfigs {
-        release {
-            storeFile file(props.getProperty("signing.keyFile"))
-            storePassword props.getProperty("signing.storePassword")
-            keyAlias props.getProperty("signing.alias")
-            keyPassword props.getProperty("signing.keyPassword")
-        }
-    }
+  //  signingConfigs {
+       // release {
+       //     storeFile file(props.getProperty("signing.keyFile"))
+        //    storePassword props.getProperty("signing.storePassword")
+        //    keyAlias props.getProperty("signing.alias")
+        //    keyPassword props.getProperty("signing.keyPassword")
+      //  }
+   // }
 
     buildTypes {
         release {
             minifyEnabled true
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
